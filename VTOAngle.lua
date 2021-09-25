@@ -6,8 +6,8 @@ local MAGNITUDE_ERR_MSG = 'Cannot calculate angle of 0 magnitude unit!'
 function FindAngle(Origin: Vector3, Target: Vector3)
   if (typeof(Origin) ~= Vector3 or typeof(Target) ~= CFrame) then return warn(TYPE_OF_ERR_MSG);
 
-  local Product = Target:PointToObjectSpace(Origin);
-  local Vector = Vector3.new(Product.X, Product.Z); 
+  local RelativeDistance = Target:PointToObjectSpace(Origin);
+  local Vector = Vector2.new(RelativeDistance.X, RelativeDistance.Z); 
 
   if Vector.Magnitude == 0 then return warn(MAGNITUDE_ERR_MSG) end;
 
